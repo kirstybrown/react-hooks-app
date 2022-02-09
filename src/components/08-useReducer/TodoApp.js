@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { todoReducer } from './todoReducer';
 import useForm from '../../hooks/useForm';
 
@@ -7,11 +7,13 @@ import './styles.css';
 
 const init = () => {
 
-    return [{
+    /* return [{
         id: new Date().getTime(),
         desc: 'Learn React',
         done: false
-    }];
+    }]; */
+
+    return JSON.parse(localStorage.getItem('todos')) || [] ;
 
 }
 
@@ -25,6 +27,11 @@ export const TodoApp = () => {
     const [ { description }, handleInputChange, reset ] = useForm({
         description: ''
     });
+
+    useEffect( () => {
+        localStorage.setItem('todos', JSON.stringify( todos ))
+    }, [todos]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
