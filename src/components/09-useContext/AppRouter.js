@@ -1,10 +1,13 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route
   } from "react-router-dom";
-  import { AboutScreen } from './AboutScreen';
+  import AboutScreen from './AboutScreen';
+  import LoginScreen from './LoginScreen';
+  import HomeScreen from './HomeScreen';
+import NavBar from './NavBar';
   
 
 const AppRouter = () => {
@@ -12,13 +15,17 @@ const AppRouter = () => {
       <Router>
           <div>
 
-              <Switch>
-                  <Route path="/about" component={ AboutScreen } />
+              <NavBar />
+                <div className='container'>
+                    <Routes>
+                        <Route path="/" element={ <HomeScreen/> } />
+                        <Route path="/about" element={ <AboutScreen/> } />
+                        <Route path="/login" element={ <LoginScreen/> } />
 
-              </Switch>
-
-
-
+                        <Route element={ <HomeScreen /> } />
+                    </Routes>
+                </div>
+              
           </div>
       </Router>
     
