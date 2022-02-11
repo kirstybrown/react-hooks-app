@@ -51,11 +51,3 @@ describe('Tests for MultipleCustomHooks component', () => {
 
       })
  })
-
- /* beforeEach( () =>  {
- 
-            useCounter.mockReturnValue({
-                counter: 10,
-                increment: () => {}
-            }); 
-        }); */
